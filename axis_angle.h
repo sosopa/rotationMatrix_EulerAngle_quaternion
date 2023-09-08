@@ -1,6 +1,6 @@
 #ifndef AXIS_ANGLE_H_
 #define AXIS_ANGLE_H_
-
+#define _USE_MATH_DEFINES
 #include <iostream>
 
 #include <Eigen/Dense>

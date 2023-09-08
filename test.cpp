@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include <iostream>
 #include "axis_angle.h"
 #include "helpers.h"
@@ -13,8 +14,7 @@ int main(int argc, char** argv)
     double rotmat[9] = {0.0};
 
     axisAngleToRotationMatrix(axis, angle, rotmat, false);
-
-    std::cout << "result: " << std::endl;
+    std::cout << "result: ";
     printMatrix(rotmat, 3, 3);
 
     //    Eigen::Vector3d rot_axis_o(axis[0], axis[1], axis[2]);
@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     std::cout << "result: " << std::endl;
     std::cout << "axis: ";
     printVector(axis_2, 3);
-    std::cout << "angle: " << angle_2/M_PI*180 << std::endl;
+    std::cout << "angle: " << angle_2/M_PI*180 << std::endl << std::endl;
 
     double axis_3[3] = {0.0};
     double angle_3 = 0.0;
@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     std::cout << "result: " << std::endl;
     std::cout << "axis: ";
     printVector(axis_3, 3);
-    std::cout << "angle: " << angle_3/M_PI*180 << std::endl;
+    std::cout << "angle: " << angle_3/M_PI*180 << std::endl << std::endl;
 
     double quaternion_1[4] = {0.0};
     rotationMatrixToQuaternion(rotmat, quaternion_1);
@@ -62,6 +62,17 @@ int main(int argc, char** argv)
     }
     std::cout << "euler angle result: ";
     printVector(eulerAngles_1, 3);
+    std::cout << std::endl;
+
+    double rotmatTest[9] = {.5, -.1464, .8536, .5, .8536, -.1464, -.7071, .5, .5};
+    double eulerAngles_2[3] = {0.0};
+    rotationMatrixToEulerAngle_XYZ(rotmatTest, eulerAngles_2);
+    for(size_t i=0; i<3; ++i)
+    {
+        eulerAngles_2[i] = eulerAngles_2[i]/M_PI*180;
+    }
+    std::cout << "euler angle result: ";
+    printVector(eulerAngles_2, 3);
     std::cout << std::endl;
 
     return 0;

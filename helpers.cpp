@@ -69,7 +69,7 @@ void printVector(const double *vec, unsigned length, bool column_p)
     // do the print job
     std::cout.precision(8); // print most 8 decimal places
     std::cout.setf( std::ios::fixed, std:: ios::floatfield); // always print 8 decimal places
-    std::cout << "\n[";
+    std::cout << "[";
     for(size_t i=0; i<length; ++i)
     {
         std::cout << " " << vec[i];
@@ -78,5 +78,4 @@ void printVector(const double *vec, unsigned length, bool column_p)
         std::cout << "]^T" << std::endl;
     else
         std::cout << "]" << std::endl;
-    std::cout << std::endl;
 }
